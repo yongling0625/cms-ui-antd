@@ -1,11 +1,30 @@
-import styles from './index.css';
+import { Layout, Menu } from 'antd';
+import SiderMenu from '@/components/SiderMenu';
+
+const { Header, Footer, Content } = Layout;
 
 function BasicLayout(props) {
   return (
-    <div className={styles.normal}>
-      <h1 className={styles.title}>Yay! Welcome to umi!</h1>
-      {props.children}
-    </div>
+    <Layout>
+      <Header>
+        <div className="logo"/>
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={['2']}
+          style={{ lineHeight: '64px' }}
+        >
+          <Menu.Item key="1">nav 1</Menu.Item>
+          <Menu.Item key="2">nav 2</Menu.Item>
+          <Menu.Item key="3">nav 3</Menu.Item>
+        </Menu>
+      </Header>
+      <Layout>
+        <SiderMenu/>
+        <Content>{props.children}</Content>
+      </Layout>
+      <Footer style={{ textAlign: 'center' }}>©2019 Created by </Footer>
+    </Layout>
   );
 }
 
