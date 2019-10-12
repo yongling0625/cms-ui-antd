@@ -5,13 +5,18 @@ export default {
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
-      dva: true,
+      dva: {
+        hmr: true,
+      },
       dynamicImport: { webpackChunkName: true },
       title: 'cms-ui-antd',
       dll: true,
       locale: {
         enable: true,
         default: 'en-US',
+      },
+      lessLoaderOptions: {
+        javascriptEnabled: true,
       },
       routes: {
         exclude: [
