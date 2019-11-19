@@ -26,12 +26,12 @@ const Login = props => {
   return (
     <Form onSubmit={handleSubmit} className={styles.loginForm}>
       <Form.Item>
-        {getFieldDecorator('account', {
-          rules: [{ required: true, message: 'Please input your account!' }],
+        {getFieldDecorator('username', {
+          rules: [{ required: true, message: 'Please input your username!' }],
         })(
           <Input
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }}/>}
-            placeholder="Account"
+            placeholder="Username"
           />,
         )}
       </Form.Item>
@@ -64,4 +64,6 @@ const Login = props => {
 
 };
 
-export default connect()(Form.create()(Login));
+export default connect(({ loading }) => ({
+  submitting: loading.effects['login/login'],
+}))(Form.create()(Login));

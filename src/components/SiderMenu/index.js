@@ -55,6 +55,7 @@ const SiderMenu = props => {
   );
 };
 
-export default connect(({ menu }) => ({
+export default connect(({ menu , loading}) => ({
   menuData: menu.menuData,
+  submitting: loading.effects['menu/fetchMenuData'],
 }))(SiderMenu);

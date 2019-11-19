@@ -3,6 +3,8 @@
  * 更详细的 api 文档: https://github.com/umijs/umi-request
  */
 import { extend } from 'umi-request';
+import Cookies from 'js-cookie';
+import { router } from 'umi';
 import { notification } from 'antd';
 
 const codeMessage = {
@@ -43,6 +45,23 @@ const request = extend({
   prefix: process.env.API_ENV,
   errorHandler, // 默认错误处理
   // credentials: 'include', // 默认请求是否带上cookie
+});
+
+// request拦截器
+request.interceptors.request.use((url, options) => {
+  let token = Cookies.get('token');
+  if (token) {
+    options.headers.token = token;
+  } else {
+    // 重定向到登录页面
+    router.push('/user/login');
+  }
+  return (
+    {
+      url,
+      options,
+    }
+  );
 });
 
 export default request;

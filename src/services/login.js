@@ -1,5 +1,11 @@
 import request from '@/utils/request';
 
-export async function fetchMenuData() {
-  return request('/menu/findMenuTree');
+export async function login(payload) {
+  return request.post('/login', {
+    data: {
+      username: payload.username,
+      password: payload.password,
+      captcha: payload.captcha,
+    },
+  });
 }

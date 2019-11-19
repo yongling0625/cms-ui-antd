@@ -13,7 +13,8 @@
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "umi-request": "^1.2.6",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "js-cookie": "^2.2.1"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
